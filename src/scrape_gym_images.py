@@ -9,11 +9,13 @@ parser = argparse.ArgumentParser(description=desc)
 parser.add_argument("output_path", type=str)
 parser.add_argument("--gym-env", type=str, default="MsPacman-v4")
 parser.add_argument("--rollouts", type=int, default=1024)
+parser.add_argument("--probability", type=float, default=0.01)
 args = parser.parse_args()
 
 # Import these after checking for argparse errors to save time.
 import tensorflow as tf
 import numpy as np
+import random
 import gym
 
 env = gym.make(args.gym_env)
@@ -27,7 +29,8 @@ for i in range(args.rollouts):
     while True:
         action = env.action_space.sample()
         obs, _, done, _ = env.step(action)
-        observations.append(obs)
+        if random.random() < args.probability:
+            observations.append(obs)
         if done:
             break
 
