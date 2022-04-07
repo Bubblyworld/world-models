@@ -20,7 +20,6 @@ args = parser.parse_args()
 # Import these after checking for argparse errors to save time.
 from nets.autoencoder import AutoEncoder
 from tensorflow.keras import losses
-import matplotlib.pyplot as plt
 import tensorflow as tf
 
 # Debug information to ensure we're actually using a GPU:

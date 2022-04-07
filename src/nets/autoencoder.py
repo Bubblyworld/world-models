@@ -41,7 +41,7 @@ class AutoEncoder(Model):
                 encoder_layers.append(layers.Cropping2D(cropping=cropping))
 
         encoder_layers.append(layers.Flatten())
-        encoder_layers.append(layers.Dense(latent_dim, activation="relu"))
+        encoder_layers.append(layers.Dense(latent_dim, activation="sigmoid"))
 
         decoder_layers = [
             layers.Dense(np.product(shapes[-1]), activation="relu"),

@@ -8,8 +8,9 @@ fi
 
 echo "Creating instance of type '$1'..."
 info=`vast create instance $1\
-  --image tensorflow/tensorflow\
-  --label latest-gpu --disk 32 | tail -c +10`
+  --image tensorflow/tensorflow:latest-gpu\
+  --label latest-gpu\
+  --disk 32 | tail -c +10`
 
 if [[ $info == *"available"* ]]; then
   echo "...but instance type '$1' is not available."
@@ -39,4 +40,4 @@ echo "...done!"
 echo
 echo "Running installation scripts..."
 ssh -p $port root@$host "pip install poetry && cd /root/world-models && poetry install"
-echo "Done! Instance is ready for abuse."
+echo "Done! Instance '$id' is ready for abuse."
