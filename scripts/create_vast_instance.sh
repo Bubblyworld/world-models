@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
-# Deploys and installs the repo on an instance of the given vast.ai ID.
-set -e
-set -x
+# Deploys and installs the repo on an instance of the given vast.ai type.
 
 if [[ -z $1 ]]; then
-  echo "Usage: ./create_vast_instance.sh VAST_ID"
+  echo "Usage: ./create_vast_instance.sh VAST_TYPE"
   exit 1
 fi
 
